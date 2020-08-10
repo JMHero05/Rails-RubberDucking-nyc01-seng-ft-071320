@@ -1,0 +1,15 @@
+<h1><%= @student.name %></h1>
+<h5><%= link_to "Edit Student", edit_student_path %></h5>
+
+<h3>Ducks Owned -</h3>
+<ul>
+  <% if @student.ducks.exists? %>
+    <% @student.ducks.each do |duck| %>
+      <li><%= duck.name %>
+        <li><%= duck.description %></li>
+      </li>
+    <% end %>
+  <% else %>
+    <div>Oh no! You need a duck. <%= link_to "Get one here!", new_duck_path %></div>
+  <% end %>
+</ul>

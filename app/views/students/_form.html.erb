@@ -1,0 +1,23 @@
+<%= form_for @student do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %>
+        prohibited this student from being saved:
+      </h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label "Student Name: " %>
+  <%= f.text_field :name %>
+  <br><br>
+  <%= f.label "Mod Number: "%>
+  <%= f.number_field :mod %>
+  <br><br>
+  <%= f.submit %>
+<% end %>

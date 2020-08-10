@@ -1,0 +1,26 @@
+<%= form_for @duck do |f| %>
+  <% if @duck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@duck.errors.count, "error") %>
+        prohibited this duck from being saved:
+      </h2>
+
+      <ul>
+      <% @duck.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label "Duck Name: " %>
+  <%= f.text_field :name %>
+  <br><br>
+  <%= f.label "Description: "%>
+  <%= f.text_field :description %>
+  <br><br>
+  <%= f.label "Student Owner: "%>
+  <%= f.collection_select :student_id, Student.all, :id, :name%>
+  <br><br>
+  <%= f.submit %>
+<% end %>
